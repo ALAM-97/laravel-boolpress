@@ -33,7 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.posts.index')}}">All Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.posts.create')}}">Create a new Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.categories.index')}}">All Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.categories.create')}}">Create a new Category</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

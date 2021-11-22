@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Rotte pubbliche
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('homepage');
+Route::get('/chi-sono', 'PageController@about')->name('about');
+Route::get('/contatti', 'PageController@contact')->name('contact');
+Route::get('/blog', 'PostController@index')->name('posts.index');
+Route::get('/blog/{slug}', 'PostController@show')->name('posts.show');
 
 // Rotte autenticazione
 Auth::routes();
@@ -22,7 +26,8 @@ Auth::routes();
 // Rotte area admin
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(
     function() {
-        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/', 'HomeController@index')->name('home');
         Route::resource('posts', 'PostController');
+        Route::resource('categories', 'CategoryController');
     });
 
