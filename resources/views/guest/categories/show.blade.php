@@ -3,27 +3,17 @@
 @section('pageContent')
     <div class="row">
         <div class="col-md-8 blog-main">
-            <h1 class="blog-post-title">{{$post['title']}}</h1>
-
-                <p class="blog-post-meta">{{$post->created_at->diffForHumans()}} by <a href="#">Jacob</a></p>
-
-                @if ($post['category'])
-                    <h4>
-                        Category: <a href="{{route('categories.show', $post['category']['slug'])}}">{{$post['category']['name']}}</a>
-                    </h4>
-                @endif
-
-                @if($post['tags'])
-                    <p>
-                    @foreach ($post["tags"] as $tag)
-                        <span class="mb-4 badge badge-pill badge-dark">{{$tag["name"]}}</span>
+            <h1 class="blog-post-title">{{$category['name']}}</h1>
+            @if(count($category['posts']) > 0)
+                <h4>All posts associated to this category:</h4>
+                <ul>
+                    @foreach ($category['posts'] as $post)
+                    <li>
+                        <a href="{{route('posts.show', $post['slug'])}}">{{$post['title']}}</a>
+                    </li>
                     @endforeach
-                    </p>
-                @endif
-
-                <p>
-                    {{$post['content']}}
-                </p>
+                </ul>
+            @endif
         </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">

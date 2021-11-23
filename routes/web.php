@@ -19,6 +19,7 @@ Route::get('/chi-sono', 'PageController@about')->name('about');
 Route::get('/contatti', 'PageController@contact')->name('contact');
 Route::get('/blog', 'PostController@index')->name('posts.index');
 Route::get('/blog/{slug}', 'PostController@show')->name('posts.show');
+Route::get('/blog/category/{slug}', 'CategoryController@show')->name('categories.show');
 
 // Rotte autenticazione
 Auth::routes();
@@ -29,5 +30,6 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('posts', 'PostController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('tags', 'TagController');
     });
 

@@ -36,6 +36,18 @@
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <p>Tags</p>
+                            @foreach ($tags as $tag)
+                                <div class="custom-control custom-checkbox">
+                                    <input {{in_array( $tag['id'], old('tags', [])) ? 'checked' : null}} name="tags[]" value="{{$tag['id']}}" type="checkbox" class="custom-control-input" id="tag-{{$tag['id']}}">
+                                    <label class="custom-control-label" for="tag-{{$tag['id']}}">{{$tag['name']}}</label>
+                                </div>
+                            @endforeach
+                            @error('tags')
+                                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-outline-secondary">Create</button>
                     </form>
                 </div>
